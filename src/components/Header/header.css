@@ -1,0 +1,13 @@
+.navBar a{
+    text-decoration: none;
+    padding: 5px;
+    margin-right: 20px;
+    background-color: lightblue;
+    color: white;
+    border-radius: 5px;
+}
+
+.navBar a:hover{
+    background-color: blueviolet;
+
+}
