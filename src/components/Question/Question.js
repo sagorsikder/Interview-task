@@ -1,14 +1,40 @@
-import {  CheckCircleIcon, EyeSlashIcon, StarIcon } from '@heroicons/react/24/solid'
+import {   EyeSlashIcon, StarIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react';
+import Options from '../Options/Options';
 import './question.css'
 
 const Question = ({questionDetails}) => {
     const {question,options,correctAnswer} = questionDetails;
-    let controler = 1;
-    const [color,setColor] = useState('text-warning');
-    const handleColor=()=>{
+    let i=true;
+    var optionsMap = [];
+    
+    for(let i=0;i<options.length;++i){
+       
+        var temp = {
+            "option":options[i],
+            "isSelect":false
+        }
+        optionsMap.push(temp);
+    }
+    // console.log("LOG:: printing options");
+    // console.log(optionsMap);
+    
+   
+    const [style,setStyle] = useState('d-none')
 
-        setColor('bg-primary text-white');
+
+    const handleStyle=()=>{
+        
+        // i?:setStyle('d-none')
+        // i=!i
+        if(i){
+            i=!i;
+            setStyle('d-block');
+        }else{
+            i=!i;
+            setStyle('d-none');
+        }
+        
     }
     
     return (
@@ -20,25 +46,21 @@ const Question = ({questionDetails}) => {
             
             <br />
             <br />
-           {
-                options.map(option=> <p onClick={handleColor} className='border rounded bg-success w-75 text-white p-2'> 
-                <span className={`${color}`}>
-                <CheckCircleIcon  className={` icon text-blue-500 me-3 text-warning`  }/>
-                </span>
-                 {option}</p>)
-           }
+           
+              <Options optionsMap={optionsMap}  options={options} correctAnswer={correctAnswer}></Options>
+           
             <br />
             <br />
-            {controler===1?<p  className='border rounded bg-warning w-75 p-2'><span className='fw-bolder '>Correct Answer :</span> {correctAnswer}</p>:''}
+           <p  className={`border ${style} rounded bg-warning w-75 p-2`}><span className='fw-bolder '>Correct Answer :</span> {correctAnswer}</p>
       
           
 
-           <EyeSlashIcon  className=" icon text-blue-500"/>
+           <EyeSlashIcon onClick={handleStyle}  className=" icon text-blue-500"/>
            
             
             
 
-            {console.log(questionDetails)}
+         
         </div>
        
     );
