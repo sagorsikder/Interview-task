@@ -1,5 +1,4 @@
-Website name : Baby Quiz
-Live site : https://baby-quiz.netlify.app
+Live site :  https://interview-task-d14ed.web.app
 
 description: 
-This is online  quiz platform.Anyone can easily test this quiz.this quiz only web develop related.I hope this website help to learning.
+This is made with in 6 hour. This is made with React, Tailwind, and DaisyUI.
